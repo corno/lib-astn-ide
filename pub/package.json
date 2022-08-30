@@ -1,0 +1,28 @@
+{
+  "author": "Corno",
+  "bugs": {
+    "url": "https://github.com/corno/astn-/issues"
+  },
+  "description": "",
+  "homepage": "https://github.com/corno/astn#readme",
+  "keywords": [],
+  "files": [
+    "dist"
+  ],
+  "license": "ISC",
+  "main": "./dist",
+  "types": "./dist",
+  "name": "lib-astn-ide",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corno/lib-astn-ide.git"
+  },
+  "dependencies": {
+    "api-astn-typedhandlers": "^0.1.0",
+    "pareto-core-lib": "^0.4.0"
+  },
+  "scripts": {},
+  "version": "0.11.0",
+  "interface-fingerprint": "a56aa23b0b97e9fa65e74993a9047a91b6dfe219",
+  "content-fingerprint": "f1ff41896430602e7fa2e077d9d3427be75022e2"
+}
