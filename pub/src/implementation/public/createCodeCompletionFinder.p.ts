@@ -1,6 +1,5 @@
 import * as pt from "pareto-core-types"
 import * as pl from "pareto-core-lib"
-import * as pw from "pareto-core-raw"
 
 import { createCodeCompletionsGenerator } from "../private/createCodeCompletionsGenerator.p"
 import { isPositionBeforeLocation } from "../private/isPositionBeforeLocation.p"
@@ -11,11 +10,11 @@ export const createCodeCompletionFinder: api.CreateCodeCompletionFinder = (
 ) => {
 
     let positionAlreadyFound = false
-    let previousAfter: null | (() => string[]) = null
-    function generate(gs: (() => string[]) | null) {
+    let previousAfter: null | (() => pt.Array<string>) = null
+    function generate(gs: (() => pt.Array<string>) | null) {
         if (gs !== null) {
             const codeCompletions = gs()
-            pw.wrapRawArray(codeCompletions).forEach((codeCompletion) => {
+            codeCompletions.forEach((codeCompletion) => {
                 $i.callback(codeCompletion)
             })
         }

@@ -20,7 +20,7 @@ export function createHoverTextsGenerator<PAnnotation>(
     function createValueHoverTextGenerator(
         name: string | null,
     ): tth.ITypedValueHandler<PAnnotation> {
-        function addOnToken<Token>(token: h.AnnotatedToken<Token, PAnnotation> | null) {
+        function addOnToken<Token>(token: h.TAnnotatedToken<Token, PAnnotation> | null) {
             if (name !== null) {
                 const cn = name
                 if (token !== null) {

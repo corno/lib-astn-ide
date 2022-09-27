@@ -1,6 +1,6 @@
 import { TLocation } from "../types/Location.p"
 
-export type CreateHoverTextsFinder_Dependencies<PAnnotation> = {
+export type DCreateHoverTextsFinder<PAnnotation> = {
     readonly "getStartLocation": ($: PAnnotation) => TLocation
     readonly "getEndLocation": ($: PAnnotation) => TLocation
 }
@@ -13,7 +13,7 @@ export type FSerializeString = (
 ) => string
 
 
-export type CreateCodeCompletionFinder_Dependencies<PAnnotation> = {
+export type DCreateCodeCompletionFinder<PAnnotation> = {
     readonly "getStartLocation": ($: PAnnotation) => TLocation
     readonly "getEndLocation": ($: PAnnotation) => TLocation
     readonly x: DX
@@ -22,12 +22,12 @@ export type CreateCodeCompletionFinder_Dependencies<PAnnotation> = {
 export type DX = {
 
     readonly "serializeString": FSerializeString
-    readonly "push": <T>(
-        $: {
-            readonly "array": T[]
-            readonly "element": T
-        }
-    ) => void
+    // readonly "push": <T>(
+    //     $: {
+    //         readonly "array": T[]
+    //         readonly "element": T
+    //     }
+    // ) => void
     readonly "getArrayLength": <T>($: T[]) => number
     readonly "getElement": <T>(
         $: {

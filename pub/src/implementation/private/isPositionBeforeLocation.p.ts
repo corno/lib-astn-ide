@@ -3,8 +3,8 @@ import * as api from "../../interface"
 
 
 export function isPositionBeforeLocation($: {
-    position: api.TLocation
-    location: api.TLocation
+    readonly "position": api.TLocation
+    readonly "location": api.TLocation
 }): boolean {
     return $.position.line < $.location.line
         || (

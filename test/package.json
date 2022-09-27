@@ -1,14 +1,6 @@
 {
   "dependencies": {
-    "lib-astn-expect": "^0.0.0",
-    "lib-astn-loader": "^0.0.0",
-    "lib-astn-mrshlschema": "^0.0.0",
-    "lib-astn-parser": "^0.0.0",
-    "lib-astn-tokenizer": "^0.0.0",
-    "lib-astn-unmarshall": "^0.0.0",
-    "pareto-core-exe": "^0.12.0",
-    "res-pareto-filesystem": "^0.24.0",
-    "pareto-core-lib": "^0.12.0",
-    "pareto-core-resolve": "^0.14.0"
+    "lib-pareto-test": "^0.7.0",
+    "pareto-core-exe": "^0.13.0"
   }
 }

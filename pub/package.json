@@ -18,11 +18,12 @@
     "url": "git+https://github.com/corno/lib-astn-ide.git"
   },
   "dependencies": {
-    "api-astn-typedhandlers": "^0.1.0",
-    "pareto-core-lib": "^0.12.0"
+    "api-astn-typedhandlers": "^0.2.0",
+    "pareto-core-lib": "^0.13.0",
+    "pareto-core-raw": "^0.4.0"
   },
   "scripts": {},
   "version": "0.11.0",
-  "interface-fingerprint": "2cefd85893e5f6f5775e9301661f6650e7dfb886",
-  "content-fingerprint": "91b4d60935586174d76f81d51a57116d6191eee4"
+  "interface-fingerprint": "804f447b5ae93109e985e10bf376bb17d6ef95b0",
+  "content-fingerprint": "1895bb08e9fe8242d837ce162230945d276d5f06"
 }

@@ -1,7 +1,7 @@
 import * as tth from "api-astn-typedhandlers"
 
 import { TLocation } from "../types/Location.p"
-import { CreateCodeCompletionFinder_Dependencies } from "../dependencies/dependencies.p"
+import { DCreateCodeCompletionFinder } from "../dependencies/dependencies.p"
 
 export type CreateCodeCompletionFinder = <PAnnotation>(
     $: {
@@ -10,7 +10,7 @@ export type CreateCodeCompletionFinder = <PAnnotation>(
     $i: {
         readonly "callback": ($: string) => void,
     },
-    $d: CreateCodeCompletionFinder_Dependencies<PAnnotation>
+    $d: DCreateCodeCompletionFinder<PAnnotation>
 ) => tth.ITypedHandler<PAnnotation>
 
 
@@ -21,5 +21,5 @@ export type FCreateHoverTextsFinder = <PAnnotation>(
     $i: {
         readonly "callback": ($: string) => void,
     },
-    $d: CreateCodeCompletionFinder_Dependencies<PAnnotation>
+    $d: DCreateCodeCompletionFinder<PAnnotation>
 ) => tth.ITypedHandler<PAnnotation>
