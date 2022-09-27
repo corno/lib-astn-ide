@@ -23,7 +23,7 @@
     "pareto-core-raw": "^0.4.0"
   },
   "scripts": {},
-  "version": "0.11.0",
+  "version": "0.1.0",
   "interface-fingerprint": "804f447b5ae93109e985e10bf376bb17d6ef95b0",
   "content-fingerprint": "1895bb08e9fe8242d837ce162230945d276d5f06"
 }
