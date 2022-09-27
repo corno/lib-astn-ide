@@ -5,29 +5,24 @@ import * as pw from "pareto-core-raw"
 
 import * as tth from "api-astn-typedhandlers"
 import h from "api-astn-handlers"
+import { DX } from "../../interface"
 
 type GetCodeCompletions = () => string[]
 
-export type SerializeString = (rawValue: string, quoted: boolean) => string
 
-type OnToken<Annotation> = (
-    annotation: Annotation,
+type OnToken<PAnnotation> = (
+    annotation: PAnnotation,
     getCodeCompletionsInToken: GetCodeCompletions | null,
     getCodeCompletionsAfterToken: GetCodeCompletions | null,
 ) => void
 
-export function createCodeCompletionsGenerator<Annotation>(
+export function createCodeCompletionsGenerator<PAnnotation>(
     $i: {
-        onToken: OnToken<Annotation>,
+        onToken: OnToken<PAnnotation>,
     },
-    $d: {
-        serializeString: SerializeString
-        push: <T>(array: T[], value: T) => void
-        getArrayLength: <T>(array: T[]) => number
-        getElement: <T>(array: T[], position: number) => T
-    }
+    $d: DX
 
-): tth.ITypedValueHandler<Annotation> {
+): tth.ITypedValueHandler<PAnnotation> {
     interface IAlternativesRoot {
         root: ILine
         serialize: () => string[]
@@ -201,7 +196,10 @@ export function createCodeCompletionsGenerator<Annotation>(
             return {
                 addLine: () => {
                     const seq: ASequence = []
-                    $d.push(imp.lines, seq)
+                    $d.push({
+                        array: imp.lines,
+                        element: seq,
+                    })
                     return createSequence(seq)
                 },
             }
@@ -213,22 +211,34 @@ export function createCodeCompletionsGenerator<Annotation>(
                     const block: ABlock = {
                         lines: [],
                     }
-                    $d.push(imp, ["block", {
-                        block: block,
-                    }])
+                    $d.push({
+                        array: imp,
+                        element: ["block", {
+                            block: block,
+                        }]
+                    })
                     callback(createBlock(block))
                 },
                 snippet: (str: string) => {
-                    $d.push(imp, ["snippet", { value: str }])
+                    $d.push({
+                        array: imp,
+                        element: ["snippet", { value: str }]
+                    })
                 },
                 addTaggedUnionStep: () => {
                     function createStep(sequence: ASequence): IStep {
                         const alts: ASequence[] = []
-                        $d.push(sequence, ["tagged union", { alts: alts }])
+                        $d.push({
+                            array: sequence,
+                            element: ["tagged union", { alts: alts }]
+                        })
                         return {
                             addOption: () => {
                                 const subSeq: ASequence = []
-                                $d.push(alts, subSeq)
+                                $d.push({
+                                    array: alts,
+                                    element: subSeq
+                                })
                                 return createSequence(subSeq)
                             },
                         }
@@ -249,17 +259,39 @@ export function createCodeCompletionsGenerator<Annotation>(
                     }
                     return str
                 }
-                function ser(seed: string[], s: ASequence, add: (str: string) => void): void {
-                    let out = seed
-                    for (let i = 0; i !== $d.getArrayLength(s); i += 1) {
-                        const step = $d.getElement(s, i)
+                function ser(
+                    $: {
+                        seed: string[],
+                        s: ASequence,
+                    },
+                    $i: {
+                        add: (str: string) => void,
+                    }
+                ): void {
+                    let out = $.seed
+                    for (let i = 0; i !== $d.getArrayLength($.s); i += 1) {
+                        const step = $d.getElement({
+                            array: $.s,
+                            position: i
+                        })
                         switch (step[0]) {
                             case "block":
                                 pl.cc(step[1], (step2) => {
                                     indentationLevel += 1
                                     pw.wrapRawArray(step2.block.lines).forEach((l) => {
                                         const temp: string[] = []
-                                        ser(pw.wrapRawArray(out).map((str) => `${str}\n${createIndentation()}`), l, (str) => $d.push(temp, str))
+                                        ser(
+                                            {
+                                                seed: pw.wrapRawArray(out).map((str) => `${str}\n${createIndentation()}`),
+                                                s: l,
+                                            },
+                                            {
+                                                add: ($) => $d.push({
+                                                    array: temp,
+                                                    element: $
+                                                })
+                                            }
+                                        )
                                         out = temp
                                     })
                                     indentationLevel -= 1
@@ -279,8 +311,23 @@ export function createCodeCompletionsGenerator<Annotation>(
                                 pl.cc(step[1], (step2) => {
                                     const temp: string[] = []
                                     for (let j = 0; j !== $d.getArrayLength(step2.alts); j += 1) {
-                                        const alt = $d.getElement(step2.alts, j)
-                                        ser(out, alt, (str) => $d.push(temp, str))
+                                        const alt = $d.getElement({
+                                            array: step2.alts,
+                                            position: j,
+                                        })
+                                        ser(
+                                            {
+                                                seed: out,
+                                                s: alt,
+                                            },
+                                            {
+                                                add: ($) => $d.push({
+                                                    array: temp,
+                                                    element: $
+                                                })
+                                            }
+
+                                        )
                                     }
                                     out = temp
                                 })
@@ -291,11 +338,22 @@ export function createCodeCompletionsGenerator<Annotation>(
                     }
 
                     pw.wrapRawArray(out).forEach((str) => {
-                        add(str)
+                        $i.add(str)
                     })
                 }
                 const res: string[] = []
-                ser([""], rootSequence, (str) => $d.push(res, str))
+                ser(
+                    {
+                        seed: [""],
+                        s: rootSequence,
+                    },
+                    {
+                        add: ($) => $d.push({
+                            array: res,
+                            element: $
+                        })
+                    }
+                )
                 return res
             },
         }
@@ -337,9 +395,9 @@ export function createCodeCompletionsGenerator<Annotation>(
     }
 
     function createValueHandler(
-    ): tth.ITypedValueHandler<Annotation> {
+    ): tth.ITypedValueHandler<PAnnotation> {
         function ifToken<Data>(
-            token: h.AnnotatedToken<Data, Annotation> | null,
+            token: h.AnnotatedToken<Data, PAnnotation> | null,
             inToken: GetCodeCompletions | null,
             afterToken: GetCodeCompletions | null,
         ) {
@@ -352,7 +410,7 @@ export function createCodeCompletionsGenerator<Annotation>(
                 afterToken,
             )
         }
-        function addDummyOnToken<Data>(token: h.AnnotatedToken<Data, Annotation> | null) {
+        function addDummyOnToken<Data>(token: h.AnnotatedToken<Data, PAnnotation> | null) {
             ifToken(
                 token,
                 null,
@@ -361,9 +419,9 @@ export function createCodeCompletionsGenerator<Annotation>(
         }
 
         function doGroup(
-            annotation: Annotation | null,
+            annotation: PAnnotation | null,
             alternatives: string[],
-        ): tth.IGroupHandler<Annotation> {
+        ): tth.IGroupHandler<PAnnotation> {
             if (annotation !== null) {
                 $i.onToken(
                     annotation,
@@ -483,7 +541,10 @@ export function createCodeCompletionsGenerator<Annotation>(
                     () => {
 
                         return [
-                            $d.serializeString($.definition["default value"], $.definition.quoted)
+                            $d.serializeString({
+                                rawValue: $.definition["default value"],
+                                quoted: $.definition.quoted
+                            })
                         ]
                     },
                     // () => {

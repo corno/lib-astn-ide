@@ -1,9 +1,8 @@
-import { isPositionBeforeLocation } from "./isPositionBeforeLocation"
-import * as tth from "api-astn-typedhandlers"
-import { createHoverTextsGenerator } from "./createHoverTextsGenerator"
-import * as api from "../interface"
+import { isPositionBeforeLocation } from "../private/isPositionBeforeLocation.p"
+import { createHoverTextsGenerator } from "../private/createHoverTextsGenerator.p"
+import * as api from "../../interface"
 
-export const createHoverTextsFinder: api.CreateHoverTextsFinder = (
+export const createHoverTextsFinder: api.FCreateHoverTextsFinder = (
     $, $i, $d,
 ) => {
     return createHoverTextsGenerator(

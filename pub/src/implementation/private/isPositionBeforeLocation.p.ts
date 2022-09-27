@@ -1,10 +1,10 @@
-import { Location } from "../interface"
 
+import * as api from "../../interface"
 
 
 export function isPositionBeforeLocation($: {
-    position: Location
-    location: Location
+    position: api.TLocation
+    location: api.TLocation
 }): boolean {
     return $.position.line < $.location.line
         || (

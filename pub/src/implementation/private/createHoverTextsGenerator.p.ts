@@ -6,21 +6,21 @@ import * as h from "api-astn-handlers"
 type GetHoverText = () => string
 
 
-export type OnTokenHoverText<Annotation> = (
-    annotation: Annotation,
+export type OnTokenHoverText<PAnnotation> = (
+    annotation: PAnnotation,
     getHoverTexts: GetHoverText | null,
 ) => void
 
-export function createHoverTextsGenerator<Annotation>(
+export function createHoverTextsGenerator<PAnnotation>(
     $i: {
-        onToken: OnTokenHoverText<Annotation>
+        onToken: OnTokenHoverText<PAnnotation>
     },
-): tth.ITypedHandler<Annotation> {
+): tth.ITypedHandler<PAnnotation> {
 
     function createValueHoverTextGenerator(
         name: string | null,
-    ): tth.ITypedValueHandler<Annotation> {
-        function addOnToken<Token>(token: h.AnnotatedToken<Token, Annotation> | null) {
+    ): tth.ITypedValueHandler<PAnnotation> {
+        function addOnToken<Token>(token: h.AnnotatedToken<Token, PAnnotation> | null) {
             if (name !== null) {
                 const cn = name
                 if (token !== null) {

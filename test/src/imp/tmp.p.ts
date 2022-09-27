@@ -45,8 +45,8 @@ pb.runProgram(($) => {
         }
     )(
         {
-            duplicateEntrySeverity: ["error", {}],
-            onDuplicateEntry: ["ignore", {}]
+            duplicateEntrySeverity: ["error", null],
+            onDuplicateEntry: ["ignore", null]
         }
     )
 

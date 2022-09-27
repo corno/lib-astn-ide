@@ -2,9 +2,9 @@ import * as pt from "pareto-core-types"
 import * as pl from "pareto-core-lib"
 import * as pw from "pareto-core-raw"
 
-import { createCodeCompletionsGenerator } from "./createCodeCompletionsGenerator"
-import { isPositionBeforeLocation } from "./isPositionBeforeLocation"
-import * as api from "../interface"
+import { createCodeCompletionsGenerator } from "../private/createCodeCompletionsGenerator.p"
+import { isPositionBeforeLocation } from "../private/isPositionBeforeLocation.p"
+import * as api from "../../interface"
 
 export const createCodeCompletionFinder: api.CreateCodeCompletionFinder = (
     $, $i, $d
@@ -45,12 +45,7 @@ export const createCodeCompletionFinder: api.CreateCodeCompletionFinder = (
                     }
                 },
             },
-            {
-                serializeString: $d.serializeString,
-                push: $d.push,
-                getArrayLength: $d.getArrayLength,
-                getElement: $d.getElement,
-            }
+            $d.x,
         ),
         onEnd: () => {
             if (!positionAlreadyFound) {
