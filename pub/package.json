@@ -19,11 +19,10 @@
   },
   "dependencies": {
     "api-astn-typedhandlers": "^0.2.0",
-    "pareto-core-lib": "^0.13.0",
-    "pareto-core-raw": "^0.4.0"
+    "pareto-core": "^0.0.4"
   },
   "scripts": {},
   "version": "0.1.0",
-  "interface-fingerprint": "90a3ba73943236f214ff993f61e6fd4c3920e734",
-  "content-fingerprint": "a59beb5b0f062f503699d4dfc31171f4b5ecde5a"
+  "interface-fingerprint": "24a8860a3fe8cfe78c434f752c54b01f1f5be6c9",
+  "content-fingerprint": "d515be46c771e4db56b7d530c414c6d1338500c7"
 }
