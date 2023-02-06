@@ -1,31 +1,19 @@
 {
   "author": "Corno",
-  "bugs": {
-    "url": "https://github.com/corno/astn-/issues"
+  "license": "ISC",
+  "description": "functions that can be used by an IDE to support ASTN",
+
+  "dependencies": {
+    "pareto-core-lib": "^0.18.1",
+    "pareto-core-raw": "^0.7.4",
+    "pareto-core-state": "^0.12.0"
   },
-  "description": "",
-  "homepage": "https://github.com/corno/astn#readme",
-  "keywords": [],
   "files": [
     "dist"
   ],
-  "license": "ISC",
-  "main": "./dist",
-  "types": "./dist",
-  "name": "lib-astn-ide",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/corno/lib-astn-ide.git"
+    "type": "git"
   },
-  "dependencies": {
-    "api-astn-typedhandlers": "^0.2.0",
-    "pareto-core": "^0.0.5",
-    "pareto-core-lib": "^0.17.0",
-    "pareto-core-raw": "^0.7.0",
-    "pareto-core-state": "^0.12.0"
-  },
-  "scripts": {},
-  "version": "0.1.0",
-  "interface-fingerprint": "cbbc4ceace07e2e7103da1b9d4c93fd604bb772e",
-  "content-fingerprint": "4070326a93a75f6df0ba4d760dd03cbbba5d57f1"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
 }
