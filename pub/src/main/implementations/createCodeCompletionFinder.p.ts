@@ -1,5 +1,5 @@
-import * as pt from "pareto-core-types"
-import * as pl from "pareto-core-lib"
+import * as pt from 'pareto-core-types'
+import * as pl from 'pareto-core-lib'
 
 import { createCodeCompletionsGenerator } from "../private/createCodeCompletionsGenerator.p"
 import { isPositionBeforeLocation } from "../private/isPositionBeforeLocation.p"

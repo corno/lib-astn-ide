@@ -1,11 +1,12 @@
 
-import * as pl from "pareto-core-lib"
-import * as pt from "pareto-core-types"
-import * as pw from "pareto-core-raw"
+import * as pl from 'pareto-core-lib'
+import * as pt from 'pareto-core-types'
+import * as pw from 'pareto-core-raw'
 
-import * as tth from "api-astn-typedhandlers"
-import h from "api-astn-handlers"
-import { DX } from "../../interface"
+import * as api from "../api"
+
+import * as mth from "api-astn-typedhandlers"
+import mh from "api-astn-handlers"
 
 type FGetCodeCompletions = () => pt.Array<string>
 
@@ -22,7 +23,7 @@ export function createCodeCompletionsGenerator<PAnnotation>(
     },
     $d: DX
 
-): tth.ITypedValueHandler<PAnnotation> {
+): mth.ITypedValueHandler<PAnnotation> {
     // interface IAlternativesRoot {
     //     root: ILine
     //     serialize: () => pt.Array<string>

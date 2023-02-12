@@ -23,10 +23,3 @@ export type FCreateHoverTextsFinder = <PAnnotation>(
     },
     $d: DCreateCodeCompletionFinder<PAnnotation>
 ) => tth.ITypedHandler<PAnnotation>
-
-
-type Dict<T> = {[key:string]: T}
-
-type Foo<X> =
-| ['x']
-| ['y', Dict<Foo<X>>]

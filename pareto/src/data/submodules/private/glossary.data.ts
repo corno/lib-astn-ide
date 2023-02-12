@@ -7,7 +7,7 @@ import {
     reference,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method
+    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, glossaryParameter, computed, optional, type
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -20,6 +20,11 @@ export const $: mglossary.T.Glossary<string> = {
     }),
     'parameters': d({}),
     'types': d({
+        "Token": type(group({
+            "annotation": member(glossaryParameter("Annotation")),
+            "getCodeCompletionsIn": member(optional(computed(array(string())))),
+            "getCodeCompletionsAfter": member(optional(computed(array(string())))),
+        })),
         //"Location": 
 
         // export type CreateCodeCompletionFinder = <PAnnotation>(
@@ -31,8 +36,8 @@ export const $: mglossary.T.Glossary<string> = {
         //     },
         //     $d: DCreateCodeCompletionFinder<PAnnotation>
         // ) => tth.ITypedHandler<PAnnotation>
-        
-        
+
+
         // export type FCreateHoverTextsFinder = <PAnnotation>(
         //     $: {
         //         readonly "position": TLocation, //the line and character where the hover is requested
@@ -49,9 +54,22 @@ export const $: mglossary.T.Glossary<string> = {
                 "callback": method(typeReference("common", "String"))
             }),
         }],
+        "OnToken": method(typeReference("Token")),
+
+        // type IOnToken<PAnnotation> = (
+        //     annotation: PAnnotation,
+        //     getCodeCompletionsInToken: FGetCodeCompletions | null,
+        //     getCodeCompletionsAfterToken: FGetCodeCompletions | null,
+        // ) => void
+
+        // export function createCodeCompletionsGenerator<PAnnotation>(
+        //     $i: {
+        //         onToken: IOnToken<PAnnotation>,
+        //     },
+        //     $d: DX
     }),
     'functions': d({
-        "CreateCodeCompletionsFinder": func(typeReference("Location"), null, interfaceReference("Callback"), inf(interfaceReference( "tth", "TypedHandler"))),
-        "CreateHoverTextsFinder": func(typeReference("common", "Null"), null, null, null),
+        "CreateCodeCompletionsGenerator": func(typeReference("Location"), null, interfaceReference("Callback"), inf(interfaceReference("tth", "TypedHandler"))),
+        "CreateHoverTextsGenerator": func(typeReference("common", "Null"), null, null, null),
     }),
 }

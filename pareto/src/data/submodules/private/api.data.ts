@@ -26,12 +26,8 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             "common": "glo-pareto-common",
         }),
         'algorithms': d({
-            "createCodeCompletionsFinder": algorithm(definitionReference("CreateCodeCompletionsFinder")),
-
-            // readonly "getStartLocation": ($: PAnnotation) => TLocation
-            // readonly "getEndLocation": ($: PAnnotation) => TLocation
-            // readonly x: DX
-            "createHoverTextsFinder": algorithm(definitionReference("CreateHoverTextsFinder")),
+            "createCodeCompletionsGenerator": algorithm(definitionReference("CreateCodeCompletionFinder")),
+            "createHoverTextsGenerator": algorithm(definitionReference("CreateHoverTextsFinder")),
         })
     },
 }

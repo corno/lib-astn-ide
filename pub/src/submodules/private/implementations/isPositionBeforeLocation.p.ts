@@ -1,11 +1,11 @@
 
-import * as api from "../../interface"
+import * as api from "../api"
 
 
-export function isPositionBeforeLocation($: {
-    readonly "position": api.TLocation
-    readonly "location": api.TLocation
-}): boolean {
+export const $$: api.CisPostionBeforeLocation = ($
+    // readonly "position": api.TLocation
+    // readonly "location": api.TLocation
+) => {
     return $.position.line < $.location.line
         || (
             $.position.line === $.location.line

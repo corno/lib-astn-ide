@@ -1,12 +1,8 @@
 import { API } from "./api"
-import { $$ as ianalysePath } from "./implementations/analysePath.p"
-import { $$ as icreateAnnotatedPathErrorMessageCreator } from "./implementations/createAnnotatedPathErrorMessageCreator.p"
-import { $$ as icreatePathErrorMessage } from "./implementations/createPathErrorMessage.p"
-import { $$ as icreatePathMessageCreator } from "./implementations/createPathMessageCreator.p"
+import { $$ as icreateCodeCompletionsFinder } from "./implementations/createCodeCompletionsFinder.p"
+import { $$ as icreateHoverTextsFinder } from "./implementations/createHoverTextsFinder.p"
 
 export const $a: API = {
-    'analysePath': ianalysePath,
-    'createAnnotatedPathErrorMessageCreator': icreateAnnotatedPathErrorMessageCreator,
-    'createPathErrorMessage': icreatePathErrorMessage,
-    'createPathMessageCreator': icreatePathMessageCreator,
+    'createCodeCompletionsFinder': icreateCodeCompletionsFinder,
+    'createHoverTextsFinder': icreateHoverTextsFinder,
 }
