@@ -12,7 +12,7 @@ export const $: mproject.T.Project = {
     'description': "functions that can be used by an IDE to support ASTN",
     'license': "ISC",
 
-    'pubdependencies': d({
+    'dependencies': d({
         "glo-pareto-common": {},
     }),
     'type': ['library', {
@@ -27,7 +27,15 @@ export const $: mproject.T.Project = {
         'executables': d({}),
         'test': {
             'dependencies': d({
+                "lib-astn-dummyhandlers": {},
             }),
+            'glossary': {
+                'functions': d({}),
+                'imports': d({}),
+                'parameters': d({}),
+                'types': d({}),
+                'interfaces': d({}),
+            },
         }
     }],
 }
