@@ -1,12 +1,12 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
-import * as mcommon from "glo-pareto-common"
+import * as gcommon from "glo-pareto-common"
 
-export type CcreateCodeCompletionsGenerator = glo.FCreateCodeCompletionFinder
+export type CcreateCodeCompletionsGenerator = gglo.FCreateCodeCompletionFinder
 
-export type CcreateHoverTextsGenerator = glo.FCreateHoverTextsFinder
+export type CcreateHoverTextsGenerator = gglo.FCreateHoverTextsFinder
 
 export type API = {
     createCodeCompletionsGenerator: CcreateCodeCompletionsGenerator
