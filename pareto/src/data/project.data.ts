@@ -10,7 +10,7 @@ import { $ as private_ } from "./submodules/private/api.data"
 export const $: mproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "functions that can be used by an IDE to support ASTN",
-    'license': "ISC",
+    'license': "TBD",
 
     'dependencies': d({
         "glo-pareto-common": {},
@@ -18,10 +18,12 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
     'type': ['library', {
         'main': {
             'definition': api,
+            'implementation': ['manual', {}],
         },
         'submodules': d({
             "private": {
                 'definition': private_,
+                'implementation': ['manual', {}],
             }
         }),
         'executables': d({}),
