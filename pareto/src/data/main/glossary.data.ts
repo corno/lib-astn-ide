@@ -7,7 +7,7 @@ import {
     reference,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method
+    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -40,15 +40,16 @@ export const $: mglossary.T.Glossary<string> = {
         //     $d: DCreateCodeCompletionFinder<PAnnotation>
         // ) => tth.ITypedHandler<PAnnotation> 
     }),
+    'builders': d({}),
     'interfaces': d({
-        "Callback": ['group', {
-            'members': d({
-                "callback": method(typeReference("common", "String"))
-            }),
-        }],
+        // "Callback": ['group', {
+        //     'members': d({
+        //         "callback": method(typeReference("common", "String")),
+        //     }),
+        // }],
     }),
     'functions': d({
-        "CreateCodeCompletionsFinder": func(typeReference("Location"), null, interfaceReference("Callback"), inf(interfaceReference( "tth", "TypedHandler"))),
+        //"CreateCodeCompletionsFinder": func(typeReference("Location"), null, interfaceReference("Callback"), inf(interfaceReference( "tth", "TypedHandler"))),
         "CreateHoverTextsFinder": func(typeReference("common", "Null"), null, null, null),
     }),
 }

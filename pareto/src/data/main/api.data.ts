@@ -13,5 +13,5 @@ export const $: gapi.T.API<pd.SourceLocation> = {
         // readonly "getEndLocation": ($: PAnnotation) => TLocation
         // readonly x: DX
         "createHoverTextsFinder": algorithm(functionReference("this", {}, "CreateHoverTextsFinder")),
-    })
+    }),
 }

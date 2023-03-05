@@ -1,12 +1,12 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcommon from "glo-pareto-common"
+import * as g_common from "glo-pareto-common"
 
 export namespace T {
     
     export namespace Token {
         
-        export type annotation = GPAnnotation
+        export type annotation = GAnnotation
         
         export namespace getCodeCompletionsAfter {
             
@@ -44,7 +44,7 @@ export namespace T {
     }
     
     export type Token = {
-        readonly 'annotation': GPAnnotation
+        readonly 'annotation': GAnnotation
         readonly 'getCodeCompletionsAfter': [ false ] | [ true, () => pt.Array<string>]
         readonly 'getCodeCompletionsIn': [ false ] | [ true, () => pt.Array<string>]
     }

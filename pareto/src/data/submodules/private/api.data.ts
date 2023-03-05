@@ -9,5 +9,5 @@ export const $: gapi.T.API<pd.SourceLocation> = {
     'algorithms': d({
         "createCodeCompletionsGenerator": algorithm(functionReference("this", {}, "CreateCodeCompletionFinder")),
         "createHoverTextsGenerator": algorithm(functionReference("this", {}, "CreateHoverTextsFinder")),
-    })
+    }),
 }

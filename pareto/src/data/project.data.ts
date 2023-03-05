@@ -26,10 +26,11 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
                 "lib-astn-dummyhandlers": null,
             }),
             'glossary': {
-                'functions': d({}),
                 'parameters': d({}),
                 'types': d({}),
+                'builders': d({}),
                 'interfaces': d({}),
+                'functions': d({}),
             },
             'imports': d({}),
         }
