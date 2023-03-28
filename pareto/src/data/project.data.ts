@@ -5,7 +5,6 @@ import * as mproject from "lib-pareto-typescript-project/dist/submodules/project
 const d = pd.d
 
 import { $ as main } from "./main/module.data"
-import { $ as private_ } from "./submodules/private/module.data"
 
 export const $: mproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
@@ -14,25 +13,46 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
 
     'dependencies': d({
         "glo-pareto-common": null,
+        "glo-astn-typedhandlers": null,
     }),
     'type': ['library', {
         'main': main,
         'submodules': d({
-            "private": private_,
         }),
+        'bindings': [false],
         'executables': d({}),
         'test': {
             'dependencies': d({
                 "lib-astn-dummyhandlers": null,
             }),
-            'glossary': {
-                'parameters': d({}),
-                'types': d({}),
-                'builders': d({}),
-                'interfaces': d({}),
-                'functions': d({}),
+            'definition': {
+                'glossary': {
+                    'root': {
+                        'parameters': d({}),
+                        'imports': d({}),
+                        'root': {
+                            'namespaces': d({}),
+                            'types': d({}),
+                        },
+                        'asynchronous': {
+                            'interfaces': d({}),
+                            'algorithms': d({}),
+                        },
+                        'synchronous': {
+                            'interfaces': d({}),
+                            'algorithms': d({}),
+                        },
+                    },
+                    'imports': d({}),
+                },
+                'api': {
+                    'root': {
+                        'algorithms': d({}),
+                    },
+                    'imports': d({}),
+                },
             },
             'imports': d({}),
-        }
+        },
     }],
 }

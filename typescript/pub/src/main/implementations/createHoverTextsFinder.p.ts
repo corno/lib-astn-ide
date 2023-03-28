@@ -1,8 +1,9 @@
 import { isPositionBeforeLocation } from "../private/isPositionBeforeLocation.p"
 import { createHoverTextsGenerator } from "../private/createHoverTextsGenerator.p"
-import * as api from "../../interface"
 
-export const createHoverTextsFinder: api.FCreateHoverTextsFinder = (
+import { A } from "../api.generated"
+
+export const $$: A.createHoverTextsFinder = (
     $, $i, $d,
 ) => {
     return createHoverTextsGenerator(
