@@ -12,7 +12,6 @@ export const $: g_project.T.ModuleDefinition.api.root<pd.SourceLocation> = {
         // // readonly "getStartLocation": ($: PAnnotation) => TLocation
         // // readonly "getEndLocation": ($: PAnnotation) => TLocation
         // // readonly x: DX
-        // "createHoverTextsFinder": algorithm(afunction("this", {}, "CreateHoverTextsFinder")),
         "createCodeCompletionsGenerator": algorithm(constructor("this", {}, "CreateCodeCompletionsGenerator"), { "Annotation": "X" }),
         "createHoverTextsGenerator": algorithm(constructor("this", {}, "CreateHoverTextsGenerator"), { "Annotation": "X" }),
         "createLocationFilter": algorithm(constructor("this", {}, "CreateLocationFilter"), { "Annotation": "X" }),

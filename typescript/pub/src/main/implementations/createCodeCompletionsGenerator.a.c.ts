@@ -7,16 +7,16 @@ import { A } from "../api.generated"
 import * as g_th from "glo-astn-typedhandlers"
 import g_h from "glo-astn-handlers"
 
-type FGetCodeCompletions = () => pt.Array<string>
+// type FGetCodeCompletions = () => pt.Array<string>
 
 
-type IOnToken<PAnnotation> = (
-    annotation: PAnnotation,
-    getCodeCompletionsInToken: FGetCodeCompletions | null,
-    getCodeCompletionsAfterToken: FGetCodeCompletions | null,
-) => void
+// type IOnToken<PAnnotation> = (
+//     annotation: PAnnotation,
+//     getCodeCompletionsInToken: FGetCodeCompletions | null,
+//     getCodeCompletionsAfterToken: FGetCodeCompletions | null,
+// ) => void
 
-export function createCodeCompletionsGenerator<PAnnotation>(
+export const $$: A.createCodeCompletionsGenerator(
     $i: {
         onToken: IOnToken<PAnnotation>,
     },

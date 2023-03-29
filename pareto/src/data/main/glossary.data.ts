@@ -1,8 +1,8 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    string, typeReference, group, member, type, constructor,
-    aInterfaceReference, aInterfaceMethod, streamconsumer, imp, glossaryParameter
+    aExternalInterfaceReference, aInterface, aInterfaceMethod, aInterfaceReference,
+    constructor, glossaryParameter, group, imp, member, ref, streamconsumer, string, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -19,7 +19,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'root': {
         'namespaces': d({}),
         'types': d({
-            "Annotation": type(glossaryParameter("Annotation")),
+            "Annotation": type(ref(glossaryParameter("Annotation"))),
             // "Token": type(group({
             //     "annotation": member(glossaryParameter("Annotation")),
             //     "getCodeCompletionsIn": member(optional(computed(array(string())))),
@@ -84,25 +84,25 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             //"CreateHoverTextsGenerator": func(typeReference("common", "Null"), null, null, null),
             //"CreateCodeCompletionsGenerator": func(typeReference("Location"), null, interfaceReference("Callback"), inf(interfaceReference("tth", "TypedHandler"))),
 
-            "HoverTextHandler": streamconsumer(
+            "HoverTextHandler": aInterface(streamconsumer(
                 aInterfaceMethod(typeReference("HoverText")),
                 aInterfaceMethod(null)
-            ),
-            "CodeCompletionHandler": streamconsumer(
+            )),
+            "CodeCompletionHandler": aInterface(streamconsumer(
                 aInterfaceMethod(typeReference("CodeCompletion")),
                 aInterfaceMethod(null)
-            ),
-            "CreateLocationFilter2": aInterfaceMethod(typeReference("LocationData"), ['reference', aInterfaceReference("th", "RootHandler")])
+            )),
+            "CreateLocationFilter2": aInterface(aInterfaceMethod(typeReference("LocationData"), ['reference', aExternalInterfaceReference("th", "RootHandler")])),
         }),
         'algorithms': d({
-            "CreateHoverTextsGenerator": constructor(aInterfaceReference("th", "RootHandler"), {
+            "CreateHoverTextsGenerator": constructor(aExternalInterfaceReference("th", "RootHandler"), {
                 "handler": aInterfaceReference("HoverTextHandler")
             }),
-            "CreateCodeCompletionsGenerator": constructor(aInterfaceReference("th", "ValueHandler"), {
+            "CreateCodeCompletionsGenerator": constructor(aExternalInterfaceReference("th", "ValueHandler"), {
                 "handler": aInterfaceReference("CodeCompletionHandler")
             }),
             "CreateLocationFilter": constructor(aInterfaceReference("CreateLocationFilter2"), {
-                "handler": aInterfaceReference("th", "ValueHandler")
+                "handler": aExternalInterfaceReference("th", "ValueHandler")
             })
         }),
     },
