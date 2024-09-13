@@ -14,7 +14,7 @@ export namespace ASYNC {
             'end': () => void
         }
         
-        export type CreateLocationFilter2<GAnnotation> = ($: T.LocationData<GAnnotation>, ) => g_th.ASYNC.I.RootHandler<T.Annotation<GAnnotation>>
+        export type CreateLocationFilter2<GAnnotation> = ($: T.LocationData<GAnnotation>, ) => g_th.ASYNC.I.RootHandler
         
         export type HoverTextHandler<GAnnotation> = {
             'data': ($: T.HoverText<GAnnotation>, ) => void
@@ -29,7 +29,7 @@ export namespace ASYNC {
             export type CreateCodeCompletionsGenerator<GAnnotation> = {
                 'construct': ($is: {
                     readonly 'handler': ASYNC.I.CodeCompletionHandler<GAnnotation>
-                }) => g_th.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                }) => g_th.ASYNC.I.ValueHandler
             }
         }
         
@@ -38,7 +38,7 @@ export namespace ASYNC {
             export type CreateHoverTextsGenerator<GAnnotation> = {
                 'construct': ($is: {
                     readonly 'handler': ASYNC.I.HoverTextHandler<GAnnotation>
-                }) => g_th.ASYNC.I.RootHandler<T.Annotation<GAnnotation>>
+                }) => g_th.ASYNC.I.RootHandler
             }
         }
         
@@ -46,7 +46,7 @@ export namespace ASYNC {
         export namespace C {
             export type CreateLocationFilter<GAnnotation> = {
                 'construct': ($is: {
-                    readonly 'handler': g_th.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                    readonly 'handler': g_th.ASYNC.I.ValueHandler
                 }) => ASYNC.I.CreateLocationFilter2<GAnnotation>
             }
         }

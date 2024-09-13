@@ -10,11 +10,11 @@ import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/gloss
 const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
-    'parameters': d({
+    'glossary parameters': d({
         "Annotation": null
     }),
     'imports': d({
-        "th": imp({ "Annotation": typeReference("Annotation") })
+        "th": imp(), //FIXME imp({ "Annotation": typeReference("Annotation") })
     }),
     'root': {
         'namespaces': d({}),
